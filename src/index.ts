@@ -1,8 +1,7 @@
-const generate = require('./generate');
-const { getRgbStr } = require('./utils');
+import { generate } from './generate'
 
-exports.generate = generate;
-exports.getRgbStr = getRgbStr;
+export { generate } from './generate'
+export { getRgbStr } from './utils'
 
 const colorList = {
   red: '#F53F3F',
@@ -18,18 +17,21 @@ const colorList = {
   purple: '#722ED1',
   pinkpurple: '#D91AD9',
   magenta: '#F5319D',
-};
+}
 
-function getPresetColors() {
-  const presetColors = {};
+export function getPresetColors(): Record<
+  keyof typeof colorList | 'gray',
+  { light: string[]; dark: string[]; primary: string }
+> {
+  const presetColors: Record<string, any> = {}
   Object.keys(colorList).forEach((key) => {
-    presetColors[key] = {};
-    presetColors[key].light = generate(colorList[key], { list: true });
-    presetColors[key].dark = generate(colorList[key], { list: true, dark: true });
-    presetColors[key].primary = colorList[key];
-  });
+    presetColors[key] = {}
+    presetColors[key].light = generate(colorList[key], { list: true })
+    presetColors[key].dark = generate(colorList[key], { list: true, dark: true })
+    presetColors[key].primary = colorList[key]
+  })
 
-  presetColors.gray = {};
+  presetColors.gray = {}
   presetColors.gray.light = [
     '#f7f8fa',
     '#f2f3f5',
@@ -41,7 +43,7 @@ function getPresetColors() {
     '#4e5969',
     '#272e3b',
     '#1d2129',
-  ];
+  ]
   presetColors.gray.dark = [
     '#17171a',
     '#2e2e30',
@@ -53,10 +55,8 @@ function getPresetColors() {
     '#c5c5c5',
     '#dfdfdf',
     '#f6f6f6',
-  ];
-  presetColors.gray.primary = presetColors.gray.light[6];
+  ]
+  presetColors.gray.primary = presetColors.gray.light[6]
 
-  return presetColors;
+  return presetColors
 }
-
-exports.getPresetColors = getPresetColors;
