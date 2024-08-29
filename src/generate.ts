@@ -2,6 +2,18 @@ import type { ColorFormats } from '@ctrl/tinycolor'
 import { colorPalette } from './palette'
 import { colorPaletteDark } from './palette-dark'
 
+export interface GenerateOptions<List extends boolean = false> {
+  index?: number
+  dark?: boolean
+  list?: List
+  format?: Extract<ColorFormats, 'hex' | 'rgb' | 'hsl'>
+}
+
+export function generate<
+  List extends boolean = false,
+  T = List extends boolean ? string[] : string,
+>(color: string, options: GenerateOptions<List>): T
+
 /**
  * @param {string} color
  * @param {Object} options
@@ -12,15 +24,7 @@ import { colorPaletteDark } from './palette-dark'
  *
  * @return string | string[]
  */
-export function generate(
-  color: string,
-  options: {
-    index?: number
-    dark?: boolean
-    list?: boolean
-    format?: Extract<ColorFormats, 'hex' | 'rgb' | 'hsl'>
-  } = {}
-) {
+export function generate(color: string, options: GenerateOptions = {}): string | string[] {
   const { dark, list, index = 6, format = 'hex' } = options
 
   if (list) {
