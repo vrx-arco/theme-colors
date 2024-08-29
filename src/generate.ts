@@ -9,10 +9,17 @@ export interface GenerateOptions<List extends boolean = false> {
   format?: Extract<ColorFormats, 'hex' | 'rgb' | 'hsl'>
 }
 
-export function generate<
-  List extends boolean = false,
-  T = List extends boolean ? string[] : string,
->(color: string, options: GenerateOptions<List>): T
+export function generate(color: string, options: GenerateOptions): string
+
+export function generate<List extends boolean = true>(
+  color: string,
+  options: GenerateOptions<List>
+): string[]
+
+export function generate<List extends boolean = false>(
+  color: string,
+  options: GenerateOptions<List>
+): string
 
 /**
  * @param {string} color

@@ -1,11 +1,11 @@
-import { assertType, expect, it } from 'vitest'
+import { expect, expectTypeOf, it } from 'vitest'
 import { generate, getPresetColors, getRgbStr } from '../src'
 
 const presetColors = getPresetColors()
 
 it('type', () => {
-  assertType<string>(generate('#F53F3F', { index: 1 }))
-  assertType<string[]>(generate('#F53F3F', { index: 1, list: true }))
+  expectTypeOf(generate('#F53F3F', { index: 1 })).toEqualTypeOf<string>()
+  expectTypeOf(generate('#F53F3F', { index: 1, list: true })).toEqualTypeOf<string[]>()
 })
 
 it('generate single color', () => {
