@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.5.2
+
+[compare changes](https://github.com/vrx-arco/theme-colors/compare/v0.5.1...v0.5.2)
+
+### 🩹 修复
+
+- 修复 generate 方法重载时类型声明错误 ([ecca661](https://github.com/vrx-arco/theme-colors/commit/ecca661))
+
+### ❤️ 贡献者
+
+- Whitekite ([@Colourlessglow](http://github.com/Colourlessglow))
+
 ## v0.5.1
 
 [compare changes](https://github.com/vrx-arco/theme-colors/compare/v0.5.0...v0.5.1)
