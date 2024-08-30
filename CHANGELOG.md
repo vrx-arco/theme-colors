@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.5.3
+
+[compare changes](https://github.com/vrx-arco/theme-colors/compare/v0.5.2...v0.5.3)
+
+### 🚀 特性
+
+- 颜色解析工具修改为按需使用 ([23244b4](https://github.com/vrx-arco/theme-colors/commit/23244b4))
+
+### ❤️ 贡献者
+
+- Whitekite ([@Colourlessglow](http://github.com/Colourlessglow))
+
 ## v0.5.2
 
 [compare changes](https://github.com/vrx-arco/theme-colors/compare/v0.5.1...v0.5.2)
