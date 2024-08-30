@@ -1,12 +1,12 @@
-import type { ColorFormats } from '@ctrl/tinycolor'
 import { colorPalette } from './palette'
 import { colorPaletteDark } from './palette-dark'
+import type { ColorFormats } from './utils'
 
 export interface GenerateOptions<List extends boolean = false> {
   index?: number
   dark?: boolean
   list?: List
-  format?: Extract<ColorFormats, 'hex' | 'rgb' | 'hsl'>
+  format?: ColorFormats
 }
 
 export function generate(color: string, options: GenerateOptions): string

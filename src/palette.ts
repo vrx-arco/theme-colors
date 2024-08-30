@@ -1,11 +1,11 @@
-import { type ColorFormats, TinyColor } from '@ctrl/tinycolor'
-import { getColorString, toHSV } from './utils'
+import { inputToRGB } from '@ctrl/tinycolor'
+import { type ColorFormats, getColorString, toHSV } from './utils'
 
 // 色板
 
 // 动态梯度算法
 export function colorPalette(originColor: string, i: number, format?: ColorFormats) {
-  const color = new TinyColor(originColor)
+  const color = inputToRGB(originColor)
   const { h, s, v } = toHSV(color)
 
   const hueStep = 2
@@ -51,7 +51,7 @@ export function colorPalette(originColor: string, i: number, format?: ColorForma
   const retColor =
     i === 6
       ? color
-      : new TinyColor({
+      : inputToRGB({
           h: getNewHue(isLight, index),
           s: getNewSaturation(isLight, index),
           v: getNewValue(isLight, index),

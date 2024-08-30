@@ -1,17 +1,17 @@
-import { type ColorFormats, TinyColor } from '@ctrl/tinycolor'
-import { getColorString, toHSV } from './utils'
+import { inputToRGB } from '@ctrl/tinycolor'
 import { colorPalette } from './palette'
+import { type ColorFormats, getColorString, toHSV } from './utils'
 
 // 暗色色板
 
 // 动态梯度算法
 export function colorPaletteDark(originColor: string, i: number, format?: ColorFormats) {
-  const lightColor = toHSV(new TinyColor(colorPalette(originColor, 10 - i + 1)))
-  const originBaseColor = toHSV(new TinyColor(originColor))
+  const lightColor = toHSV(inputToRGB(colorPalette(originColor, 10 - i + 1)))
+  const originBaseColor = toHSV(inputToRGB(originColor))
 
   const originBaseHue = originBaseColor.h
   const originBaseSaturation = originBaseColor.s
-  const baseColor = new TinyColor({
+  const baseColor = inputToRGB({
     h: originBaseColor.h,
     s: getNewSaturation(6),
     v: originBaseColor.v,
@@ -40,7 +40,7 @@ export function colorPaletteDark(originColor: string, i: number, format?: ColorF
     return baseSaturation - step * (_index - 6)
   }
 
-  const retColor = new TinyColor({
+  const retColor = inputToRGB({
     h: lightColor.h,
     s: getNewSaturation(i),
     v: lightColor.v,
